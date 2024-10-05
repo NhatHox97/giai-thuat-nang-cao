@@ -14,7 +14,7 @@ var Num3 = "num3.txt"
 func main() {
 
 	// Run this if you want to re-generate file
-	// generateData()
+	//generateData()
 
 	// Read files -> choose between Num1, Num2, Num3
 	numbers, err := generator.ReadNumbers(Num3)
@@ -25,12 +25,11 @@ func main() {
 
 	// Calculate run time
 	duration := calculateRunTime(func() {
-
 		// Pass in your sorting algo here, all sorting algo inside package sortAlgo
-		sortAlgo.ShellSort(numbers)
+		sortAlgo.RadixSort(numbers)
 	})
 
-	fmt.Printf("Sorting completed in %.2f seconds\n", duration)
+	fmt.Printf("Sorting completed in %.3f seconds\n", duration)
 }
 
 /**

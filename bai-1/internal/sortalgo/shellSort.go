@@ -1,15 +1,11 @@
 package sortAlgo
 
-import "fmt"
-
 // ShellSort sorts an array using the Shell sort algorithm.
 func ShellSort(arr []int64) {
-	fmt.Println("Initial array size: ", len(arr))
 	n := len(arr)
 	gap := n / 2 // Start with a big gap, then reduce the gap
 	// Do a gapped insertion sort for this gap size.
 	for gap > 0 {
-		fmt.Println("Processing gap: ", gap)
 		// Pick all elements one by one and move them
 		// to their correct position
 		for i := gap; i < n; i++ {

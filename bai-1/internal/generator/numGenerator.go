@@ -11,7 +11,7 @@ import (
 	"time"
 )
 
-// GenerateNumbers creates a file with random numbers in the specified range
+// GenerateNumbers creates a file with random numbers between 0 and 999999
 func GenerateNumbers(filename string, count int) error {
 	// Define the full path to save the file
 	fullPath := filepath.Join("internal", "resources", filename)
