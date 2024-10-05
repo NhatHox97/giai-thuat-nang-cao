@@ -3,8 +3,8 @@ package sortAlgo
 import "fmt"
 
 func BubbleSort(arr []int64) []int64 {
+	fmt.Println("Initial array size: ", len(arr))
 	for i := 0; i < len(arr)-1; i++ {
-		fmt.Printf("Processing i %d\n", i)
 		for j := 0; j < len(arr)-i-1; j++ {
 			if arr[j] > arr[j+1] {
 				temp := arr[j+1]
@@ -12,7 +12,7 @@ func BubbleSort(arr []int64) []int64 {
 				arr[j] = temp
 			}
 		}
+		fmt.Printf("Processing i %d\n", i)
 	}
-	fmt.Println("Array arr: ", arr)
 	return arr
 }
