@@ -14,10 +14,10 @@ var Num3 = "num3.txt"
 func main() {
 
 	// Run this if you want to re-generate file
-	//generateData()
+	generateData()
 
 	// Read files -> choose between Num1, Num2, Num3
-	numbers, err := generator.ReadNumbers(Num3)
+	numbers, err := generator.ReadNumbers(Num1)
 	if err != nil {
 		fmt.Println("Can't find your find, please run generateData", err)
 		return

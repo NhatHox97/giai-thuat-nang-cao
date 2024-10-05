@@ -4,17 +4,26 @@ import (
 	"bufio"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"os"
 	"path/filepath"
 	"strconv"
 	"strings"
-	"time"
 )
 
 // GenerateNumbers creates a file with random numbers between 0 and 999999
 func GenerateNumbers(filename string, count int) error {
 	// Define the full path to save the file
-	fullPath := filepath.Join("internal", "resources", filename)
+	resourcesPath := filepath.Join("internal", "resources")
+
+	// Check if the resources directory exists, and create it if it doesn't
+	if _, err := os.Stat(resourcesPath); os.IsNotExist(err) {
+		if err := os.MkdirAll(resourcesPath, os.ModePerm); err != nil {
+			return fmt.Errorf("error creating resources directory: %w", err)
+		}
+	}
+
+	fullPath := filepath.Join(resourcesPath, filename)
 
 	// Create or open the file for writing
 	file, err := os.Create(fullPath)
@@ -26,7 +35,7 @@ func GenerateNumbers(filename string, count int) error {
 	writer := bufio.NewWriter(file)
 	for i := 0; i < count; i++ {
 		// Generate a random number between 0 and 999999
-		num := time.Now().UnixNano() % 1000000 // Replace with a proper random number generator if needed
+		num := rand.Int63n(1_000_000) // Use a proper random number generator
 		if i > 0 {
 			writer.WriteString(" ") // Space between numbers
 		}
