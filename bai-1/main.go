@@ -14,27 +14,26 @@ var Num3 = "num3.txt"
 func main() {
 
 	// Run this if you want to re-generate file
-	generateData()
+	//generateData()
 
 	// Read files -> choose between Num1, Num2, Num3
 	numbers, err := generator.ReadNumbers(Num1)
 	if err != nil {
-		fmt.Println("Can't find your find, please run generateData", err)
+		fmt.Println("Can't find your files, please run generateData", err)
 		return
 	}
 
 	// Calculate run time
 	duration := calculateRunTime(func() {
 		// Pass in your sorting algo here, all sorting algo inside package sortAlgo
-		sortAlgo.RadixSort(numbers)
+		// Example: calculate runtime for quick sort
+		sortAlgo.QuickSort(numbers)
 	})
 
 	fmt.Printf("Sorting completed in %.3f seconds\n", duration)
 }
 
-/**
- * Calculate run time for the pass in function
- */
+// calculateRunTime: calculate the runtime of the pass-in function
 func calculateRunTime(runFunc func()) float64 {
 	var start = time.Now().UnixMilli()
 	runFunc() // Execute the passed-in function
@@ -43,9 +42,7 @@ func calculateRunTime(runFunc func()) float64 {
 	return duration
 }
 
-/**
- * Generate 3 files -> 1 mil, 10 mil, 100 mil
- */
+// generateData: generate 3 files for testing
 func generateData() {
 	err1 := generator.GenerateNumbers(Num1, 1_000_000)
 	if err1 != nil {

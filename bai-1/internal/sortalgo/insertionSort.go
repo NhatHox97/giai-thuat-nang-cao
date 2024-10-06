@@ -19,8 +19,5 @@ func InsertionSort(arr []int64) {
 		arr[j+1] = temp // Insert temp at the correct position
 
 		// Print the state of the array after each insertion
-		fmt.Printf("Processed element %d (value: %d): %v\n", i, temp, arr)
 	}
-
-	fmt.Println("Final sorted array:", arr)
 }

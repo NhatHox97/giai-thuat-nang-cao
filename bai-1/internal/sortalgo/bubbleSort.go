@@ -12,7 +12,6 @@ func BubbleSort(arr []int64) []int64 {
 				arr[j] = temp
 			}
 		}
-		fmt.Printf("Processing i %d\n", i)
 	}
 	return arr
 }
