@@ -77,6 +77,10 @@ int main() {
         if (i < path.size() - 1) {
             cout << " -> ";
         }
+        if (i == path.size() -1)
+        {
+            cout << " -> 0";
+        }
     }
     cout << endl;
     cout << "-------------------------------" << endl;
