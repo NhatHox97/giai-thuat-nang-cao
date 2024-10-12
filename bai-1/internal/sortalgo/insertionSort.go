@@ -1,11 +1,7 @@
 package sortAlgo
 
-import "fmt"
-
 // InsertionSort sorts an array using the Insertion sort algorithm.
 func InsertionSort(arr []int64) {
-	fmt.Println("Initial array size: ", len(arr))
-
 	for i := 1; i < len(arr); i++ {
 		temp := arr[i]
 		j := i - 1

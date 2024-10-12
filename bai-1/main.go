@@ -23,11 +23,16 @@ func main() {
 		return
 	}
 
+	fmt.Println("Initial array size: ", len(numbers))
 	// Calculate run time
 	duration := calculateRunTime(func() {
 		// Pass in your sorting algo here, all sorting algo inside package sortAlgo
 		// Example: calculate runtime for quick sort
+<<<<<<< Updated upstream
 		sortAlgo.QuickSort(numbers)
+=======
+		sortAlgo.ShellSort(numbers)
+>>>>>>> Stashed changes
 	})
 
 	fmt.Printf("Sorting completed in %.3f seconds\n", duration)

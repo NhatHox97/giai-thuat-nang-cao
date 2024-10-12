@@ -1,7 +1,5 @@
 package sortAlgo
 
-import _ "fmt"
-
 // QuickSort sorts an array of int64 using the Quick Sort algorithm
 func QuickSort(arr []int64) {
 	if len(arr) <= 1 {

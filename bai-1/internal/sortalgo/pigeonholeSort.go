@@ -2,8 +2,6 @@ package sortAlgo
 
 // PigeonholeSort sorts an array of int64 using the pigeonhole sorting algorithm
 func PigeonholeSort(arr []int64) []int64 {
-	// Calculate the range
-
 	minElement, maxElement := arr[0], arr[0]
 	for _, num := range arr {
 		if num < minElement {

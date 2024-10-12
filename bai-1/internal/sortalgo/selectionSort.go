@@ -1,13 +1,7 @@
 package sortAlgo
 
-import (
-	"fmt"
-)
-
 // SelectionSort sorts an array using the Selection sort algorithm.
 func SelectionSort(arr []int64) {
-	fmt.Println("Initial array:", len(arr))
-
 	n := len(arr)
 	for i := 0; i < n-1; i++ {
 		// Assume the minimum is the first element
