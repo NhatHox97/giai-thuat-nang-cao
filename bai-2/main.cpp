@@ -15,18 +15,23 @@ void displayGraph(const vector<vector<int>>& graph) {
     }
 }
 
+/**
+ * Xữ lý bài toán người bán hàng bằng phướng pháp quy hoạch động
+ * Kết hợp với bitmask để đánh dấu các thành phố đã qua 1 cách hiệu quả hơn
+ * Tham khảo tại nguồn: https://www.geeksforgeeks.org/travelling-salesman-problem-using-dynamic-programming/
+ */
 int main() {
     int n;
     cout << "Enter the number of cities: ";
     cin >> n;
 
     Graph graph(n);
-    cout << "Do you want to manually input the distances or auto-generate them? (m/a): ";
+    cout << "Do you want to auto-generate city? (y/n): ";
     char choice;
     cin >> choice;
 
     // Input distance matrix
-    if (choice == 'm') {
+    if (choice == 'n') {
         cout << "Enter the distance matrix (0 for same city):\n";
         for (int i = 0; i < n; ++i) {
             for (int j = 0; j < n; ++j) {
@@ -63,12 +68,10 @@ int main() {
     int totalCost = result; // Start with the minimum cost
 
     // Display results
-    cout << "The minimum travel cost without return: " << result << endl;
-    int returnCost = graph.getDistance(path.back(), 0);
-    cout << "The minimum travel cost with return " << totalCost + returnCost << endl;
+    cout << "The minimum travel cost: " << result << endl;
 
     cout << "The route to travel is: ";
-    // Output the route step by step with costs
+    // Output the route step by step
     for (size_t i = 0; i < path.size(); ++i) {
         cout << path[i];
         if (i < path.size() - 1) {
@@ -76,13 +79,22 @@ int main() {
         }
     }
     cout << endl;
+    cout << "-------------------------------" << endl;
     cout << "Details journey: " << endl;
+
+    int cumulativeCost = 0; // To track the cumulative cost
+    cout << "Current Cost: " << cumulativeCost << endl;
     for (size_t i = 0; i < path.size() - 1; ++i) {
         int from = path[i];
         int to = path[i + 1];
         int cost = graph.getDistance(from, to);
-        cout << from << " -> " << to << " (Cost: " << cost << ")\n";
+        cumulativeCost += cost; // Update cumulative cost
+        cout << from << " -> " << to << " (Cost: " << cost << ", Current Cost: " << cumulativeCost << ")\n";
     }
-    cout << "Return to starting city: " << 0 << " (Cost: " << returnCost << ")\n";
+
+    int returnCost = graph.getDistance(path.back(), 0);
+    cumulativeCost += returnCost; // Update cumulative cost for return
+    cout << "Return to starting city: " << 0 << " (Cost: " << returnCost << ", Total Travel Cost: " << cumulativeCost << ")\n";
+
     return 0;
 }
